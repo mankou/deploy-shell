@@ -1,0 +1,10 @@
+# 务必保证重定向的目录存在 
+
+# 每天0点0分 备份日志 并清除日志
+0 0 * * * /home/user/shell/cleanLog/cleanLog.sh -f /home/user/test/nohup.out  -t /home/user/nohup/test  -p test >>/home/user/nohup/shelllog/cleanLog.test.log 2>&1
+
+
+# 每天4点删除无用的日志 只保留最近的30个
+# 注 如果有多个不要同时执行 否则日志会错乱的
+0 4 * * * /home/user/shell/util/delete.sh  -n 30  -M crontab   /home/user/nohup/test >>/home/user/nohup/shelllog/delete.test.log 2>&1
+1 4 * * * /home/user/shell/util/delete.sh  -n 30  -M crontab   /home/user/nohup/test >>/home/user/nohup/shelllog/delete.test.log 2>&1
