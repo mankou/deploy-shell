@@ -8,3 +8,10 @@
 # 注 如果有多个不要同时执行 否则日志会错乱的
 0 4 * * * /home/user/shell/util/delete.sh  -n 30  -M crontab   /home/user/nohup/test >>/home/user/nohup/shelllog/delete.test.log 2>&1
 1 4 * * * /home/user/shell/util/delete.sh  -n 30  -M crontab   /home/user/nohup/test >>/home/user/nohup/shelllog/delete.test.log 2>&1
+
+
+# 每分钟拼一下各数据库服务器
+*/1 * * * * /home/user/shell/pingsh/pingsh.sh -p 192.168.1.111   -s test-111   -l /home/user/pinglog/45-111 >/dev/null 2>&1
+*/1 * * * * /home/user/shell/pingsh/pingsh.sh -p 192.168.1.112   -s test-112   -l /home/user/pinglog/45-112 >/dev/null 2>&1
+*/1 * * * * /home/user/shell/pingsh/pingsh.sh -p 192.168.1.103  -s test-103 -l /home/user/pinglog/yhsq-103 >/dev/null 2>&1
+*/1 * * * * /home/user/shell/pingsh/pingsh.sh -p 192.168.1.104  -s test-104 -l /home/user/pinglog/yhsq-104 >/dev/null 2>&1
